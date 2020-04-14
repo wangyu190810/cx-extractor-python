@@ -124,3 +124,17 @@ class CxExtractor:
         s = re_space.sub(' ', s)
         s = await self.replaceCharEntity(s)
         return s
+
+
+class RunCxExtractor(CxExtractor):
+
+    async def run_url(self,url):
+        html = await self.getHtml(url)
+        content = await self.filter_tags(html)
+        data = await self.getText(content)
+        return data
+
+    async def run_html(self,html):
+        content = await self.filter_tags(html)
+        data = await self.getText(content)
+        return data
