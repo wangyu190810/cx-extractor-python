@@ -10,9 +10,10 @@ cx = RunCxExtractor(threshold=186)
 
 loop = asyncio.get_event_loop()   # asyncip已经实现事件循环，只需要调用asyncio.get_event_loop()就可以完成select的操作
 #get_future = asyncio.ensure_future(get_html("http://www.baidu.com"))  # 等效未loop.create_task()
-task = loop.create_task( cx.run("https://www.secpulse.com/archives/128005.html"))
+task = loop.create_task( cx.run_url("https://www.secpulse.com/archives/128005.html"))
 loop.run_until_complete(task)
 print(task.result())
+
 # content = cx.filter_tags(task.result())
 # s = cx.getText(content)
 
